@@ -4,8 +4,30 @@ test('Add Brocolli to cart and place order', async ({ page }) => {
   // Navigate to the website
   await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
 
-  // Add Brocolli - 1 Kg to the cart
-  await page.locator(".product:has-text('Brocolli')").locator('button:has-text("ADD TO CART")').click();
+
+  // Add Brocolli - 1 Kg to the cart and verify price
+  const brocolli = page.locator(".product:has-text('Brocolli')");
+  const brocolliPrice = await brocolli.locator('.product-price').textContent();
+  await brocolli.locator('button:has-text("ADD TO CART")').click();
+  console.log('Brocolli Price:', brocolliPrice);
+
+  // Add Carrot - 1 Kg to the cart and verify price
+  const carrot = page.locator(".product:has-text('Carrot')");
+  const carrotPrice = await carrot.locator('.product-price').textContent();
+  await carrot.locator('button:has-text("ADD TO CART")').click();
+  console.log('Carrot Price:', carrotPrice);
+
+  // Add Mango - 1 Kg to the cart and verify price
+  const mango = page.locator(".product:has-text('Mango')");
+  const mangoPrice = await mango.locator('.product-price').textContent();
+  await mango.locator('button:has-text("ADD TO CART")').click();
+  console.log('Mango Price:', mangoPrice);
+
+  // Add Walnuts - 1/4 Kg to the cart and verify price
+  const walnuts = page.locator(".product:has-text('Walnuts')");
+  const walnutsPrice = await walnuts.locator('.product-price').textContent();
+  await walnuts.locator('button:has-text("ADD TO CART")').click();
+  console.log('Walnuts Price:', walnutsPrice);
 
   // Proceed to cart
   await page.locator('a.cart-icon').click();
